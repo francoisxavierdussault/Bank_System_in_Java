@@ -1,0 +1,22 @@
+# Fichiers IDE
+.idea/
+.settings/
+.metadata/
+.classpath
+.project
+*.iml
+.vscode/
+
+# Compilation
+bin/
+out/
+build/
+*.class
+
+# Logs et fichiers temporaires
+*.log
+hs_err_pid*
+
+# Système
+.DS_Store
+Thumbs.db
