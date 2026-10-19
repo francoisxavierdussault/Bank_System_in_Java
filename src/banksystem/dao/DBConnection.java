@@ -11,13 +11,13 @@ import java.sql.SQLException;
 public class DBConnection {
 
 	/** URL de connexion à Oracle XE. */
-	static String url  = "jdbc:oracle:thin:@localhost:1521/xe";
+	static String url  = "jdbc:h2:mem:bankdemo;MODE=Oracle;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=TRUE";
 
 	/** Nom d'utilisateur Oracle. */
-	static String user = "c##banksystem";
+	static String user = "sa";
 
 	/** Mot de passe Oracle. */
-	static String pass = "123";
+	static String pass = "";
 
 	/** Connexion partagée (singleton). */
 	static Connection myConnection = null;
@@ -37,6 +37,7 @@ public class DBConnection {
 			if (myConnection == null || myConnection.isClosed()) {
 				myConnection = DriverManager.getConnection(url, user, pass);
 				myConnection.setAutoCommit(false);
+				DemoSeeder.init(myConnection);
 				System.out.println("\n\t\t Connexion réussie à Oracle XE - c##banksystem\n");
 			}
 		} catch (SQLException ex) {
